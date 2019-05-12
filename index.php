@@ -7,10 +7,22 @@ $lowercase = array(
 	'n','o','p','q','r','s','t','u','v','w','x','y','z'
 );
 
+$uppercase = array(
+	'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+	'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'	
+);
+
 if (isset($_POST['submit'])) {
 	for ($i = 0; $i < 12; $i++) {
-		$random = rand(0, 25);
-		$password .= $lowercase[$random];
+		$char_select = rand(0, 1);
+
+		if ($char_select == 0) {
+			$random = rand(0, 25);
+			$password .= $lowercase[$random];
+		} elseif ($char_select == 1) {
+			$random = rand(0, 25);
+			$password .= $uppercase[$random];
+		}
 	}
 }
 
