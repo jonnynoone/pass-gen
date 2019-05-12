@@ -12,11 +12,17 @@ $uppercase = array(
 	'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'	
 );
 
+$symbol = array(
+	'!', '£', '$', '%', '^', '&', '*', '(', ')', '_', '-', '+', '=',
+	'{', '}', '[', ']', ':', ';', '@', '#', '~', '<', '>', '?', '/',
+	'|', '\\'
+);
+
 if (isset($_POST['submit'])) {
 	$pass_length = intval($_POST['charSelect']);
 
 	for ($i = 0; $i < $pass_length; $i++) {
-		$char_select = rand(0, 2);
+		$char_select = rand(0, 3);
 
 		if ($char_select == 0) {
 			$random = rand(0, 25);
@@ -27,6 +33,9 @@ if (isset($_POST['submit'])) {
 		} elseif ($char_select == 2) {
 			$random = rand(0, 9);
 			$password .= $random;
+		} elseif ($char_select == 3) {
+			$random = rand(0, 27);
+			$password .= $symbol[$random];
 		}
 	}
 }
