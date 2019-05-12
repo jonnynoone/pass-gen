@@ -101,7 +101,13 @@ body {
   }
 }
 
+
+/* Tweaks */
 .fa-key {
   font-size: 64px;
   margin-bottom: 20px;
+}
+
+.form-check label {
+  margin-right: 4px;
 }

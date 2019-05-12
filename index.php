@@ -13,7 +13,9 @@ $uppercase = array(
 );
 
 if (isset($_POST['submit'])) {
-	for ($i = 0; $i < 12; $i++) {
+	$pass_length = intval($_POST['charSelect']);
+
+	for ($i = 0; $i < $pass_length; $i++) {
 		$char_select = rand(0, 2);
 
 		if ($char_select == 0) {
@@ -72,16 +74,25 @@ if (isset($_POST['submit'])) {
 		</div>
 		-->
 
-		<!--
 		<div class="form-check">
-			<input type="radio" name="charSelect" checked>
-			<label for="materialChecked">12 Characters</label>
-			<input type="radio" name="charSelect">
-			<label for="materialUnchecked">16 Characters</label>
-			<input type="radio" name="charSelect">
-			<label for="materialUnchecked">20 Characters</label>
+			<label><input type="radio" name="charSelect" value="12" 
+				<?php if(isset($_POST['submit'])) { 
+					echo ($_POST['charSelect'] == 12) ? "checked" : "";
+				} else {
+					echo "checked";
+				} ?>
+			> 12 Characters</label>
+			<label><input type="radio" name="charSelect" value="16"
+				<?php if(isset($_POST['submit'])) { 
+					echo ($_POST['charSelect'] == 16) ? "checked" : "";
+				} ?>
+			> 16 Characters</label>
+			<label><input type="radio" name="charSelect" value="20"
+				<?php if(isset($_POST['submit'])) { 
+					echo ($_POST['charSelect'] == 20) ? "checked" : "";
+				} ?>
+			> 20 Characters</label>
 		</div>
-		-->
 
 		<button class="btn btn-lg btn-primary btn-block" type="submit" name="submit">Generate!</button>
 	</form>
