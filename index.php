@@ -14,7 +14,7 @@ $uppercase = array(
 
 if (isset($_POST['submit'])) {
 	for ($i = 0; $i < 12; $i++) {
-		$char_select = rand(0, 1);
+		$char_select = rand(0, 2);
 
 		if ($char_select == 0) {
 			$random = rand(0, 25);
@@ -22,6 +22,9 @@ if (isset($_POST['submit'])) {
 		} elseif ($char_select == 1) {
 			$random = rand(0, 25);
 			$password .= $uppercase[$random];
+		} elseif ($char_select == 2) {
+			$random = rand(0, 9);
+			$password .= $random;
 		}
 	}
 }
