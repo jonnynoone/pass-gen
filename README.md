@@ -1,3 +1,3 @@
-# Password Generator
+# Mobile Number Generator
 
-A simple password generator written in PHP and JavaScript
+A simple mobile number generator written in PHP and JavaScript
