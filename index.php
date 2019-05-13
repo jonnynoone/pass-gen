@@ -13,9 +13,10 @@ $uppercase = array(
 );
 
 $symbol = array(
-	'!', '£', '$', '%', '^', '&', '*', '(', ')', '_', '-', '+', '=',
-	'{', '}', '[', ']', ':', ';', '@', '#', '~', '<', '>', '?', '/',
-	'|', '\\'
+	'&#33;', '&#163;', '&#36;', '&#37;', '&#94;', '&#38;', '&#42;', '&#40;',
+	'&#41;', '&#95;', '&#45;', '&#43;', '&#61;', '&#123;', '&#125;', '&#91;',
+	'&#93;', '&#58;', '&#59;', '&#64;',	'&#35;', '&#126;', '&#60;', '&#62;',
+	'&#63;', '&#47;', '&#124;', '&#46;', '&#44;'
 );
 
 if (isset($_POST['submit'])) {
@@ -34,8 +35,12 @@ if (isset($_POST['submit'])) {
 			$random = rand(0, 9);
 			$password .= $random;
 		} elseif ($char_select == 3) {
-			$random = rand(0, 27);
-			$password .= $symbol[$random];
+			if (isset($_POST['incSymbols'])) {
+				$random = rand(0, 26);
+				$password .= $symbol[$random];
+			} else {
+				$i--;
+			}
 		}
 	}
 }
@@ -68,39 +73,33 @@ if (isset($_POST['submit'])) {
 			<p><?php echo $password; ?></p>
 		</div>
 
-		<!--
-		<div class="form-label-group">
-			<input type="text" id="inputName" class="form-control" placeholder="Name" required autofocus>
-			<label for="inputName">Name</label>
-		</div>
-		-->
-
-		<!--
-		<div class="checkbox mb-3">
+		<div class="form-check">
 			<label>
-				<input type="checkbox" value="include-numbers"> Include symbols?
+				<input type="checkbox" name="incSymbols" value="true"
+					<?php echo (isset($_POST['incSymbols'])) ? "checked" : "" ?>
+				> Include Symbols
 			</label>
 		</div>
-		-->
 
 		<div class="form-check">
+			<span>Characters:</span>
 			<label><input type="radio" name="charSelect" value="12" 
 				<?php if(isset($_POST['submit'])) { 
 					echo ($_POST['charSelect'] == 12) ? "checked" : "";
 				} else {
 					echo "checked";
 				} ?>
-			> 12 Characters</label>
+			> 12</label>
 			<label><input type="radio" name="charSelect" value="16"
 				<?php if(isset($_POST['submit'])) { 
 					echo ($_POST['charSelect'] == 16) ? "checked" : "";
 				} ?>
-			> 16 Characters</label>
+			> 16</label>
 			<label><input type="radio" name="charSelect" value="20"
 				<?php if(isset($_POST['submit'])) { 
 					echo ($_POST['charSelect'] == 20) ? "checked" : "";
 				} ?>
-			> 20 Characters</label>
+			> 20</label>
 		</div>
 
 		<button class="btn btn-lg btn-primary btn-block" type="submit" name="submit">Generate!</button>

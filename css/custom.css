@@ -108,6 +108,6 @@ body {
   margin-bottom: 20px;
 }
 
-.form-check label {
-  margin-right: 4px;
+input[type="radio"] {
+  margin-left: 6px;
 }
