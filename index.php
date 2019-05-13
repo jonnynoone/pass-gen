@@ -69,8 +69,6 @@ if (isset($_POST['submit'])) {
 			<i class="fas fa-key"></i>
 
 			<h1 class="h3 mb-3 font-weight-normal">Password Generator</h1>
-
-			<p><?php echo $password; ?></p>
 		</div>
 
 		<div class="form-check">
@@ -103,7 +101,31 @@ if (isset($_POST['submit'])) {
 		</div>
 
 		<button class="btn btn-lg btn-primary btn-block" type="submit" name="submit">Generate!</button>
+
+		<?php if ($password > "") {
+			echo "
+			<div class=\"form-label-group\">
+	            <input type=\"text\" id=\"passDisplay\" class=\"form-control\" value=\"$password\">
+	            <label for=\"passDisplay\">Password</label>
+	        </div>
+
+			<button type=\"button\" id=\"passCopy\" class=\"btn btn-lg btn-primary btn-block\">Copy</button>
+	        "; 
+    	} ?>
 	</form>
+
+	<?php if ($password > "") { ?>
+	<script>
+		var copy = () => {
+			var password = document.querySelector('#passDisplay');
+			password.select();
+			document.execCommand('copy');
+		};
+
+		var el = document.querySelector('#passCopy');
+		el.addEventListener('click', copy);
+	</script>
+	<?php } ?>
 </body>
 
 </html>

@@ -44,7 +44,6 @@ body {
   cursor: text; /* Match the input under the label */
   border: 1px solid transparent;
   border-radius: .25rem;
-  transition: all .1s ease-in-out;
 }
 
 .form-label-group input::-webkit-input-placeholder {
@@ -110,4 +109,8 @@ body {
 
 input[type="radio"] {
   margin-left: 6px;
+}
+
+.btn-lg {
+  margin-bottom: 15px;
 }
